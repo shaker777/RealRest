@@ -39,4 +39,8 @@ open class CommandExecutor <CommandContext>: ICommandExecutor {
         }
         return CommandFuture<T>.FutureT()
     }
+    
+    open func setRestUrl(_ url: String){
+        restSender.serverUrl = url
+    }
 }
