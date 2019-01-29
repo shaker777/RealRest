@@ -16,13 +16,17 @@ class Command {
 
 open class CommandExecutor <CommandContext>: ICommandExecutor {
     var appSender: AppSender<CommandContext>
-    public var restSender: RestSender<CommandContext>
+    var restSender: RestSender<CommandContext>
     public var commandContext: CommandContext?
 
     public init(serverUrl:String, context: CommandContext){
         appSender = AppSender<CommandContext>()
         restSender = RestSender<CommandContext>(serverUrl: serverUrl)
         self.commandContext = context;
+    }
+    
+    open func setupHeaders(headers:[String:String]) {
+        self.restSender.setHeaders = headers
     }
     
     open func execute<T: ICommand>(_ command: T) -> CommandFuture<T>.FutureT {
