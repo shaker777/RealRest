@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class RestClient: IRestClient {
-    var alamoFireManager: SessionManager
+    public var alamoFireManager: SessionManager
     
     init() {
         let configuration = URLSessionConfiguration.default
