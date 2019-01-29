@@ -16,7 +16,7 @@ class Command {
 
 open class CommandExecutor <CommandContext>: ICommandExecutor {
     var appSender: AppSender<CommandContext>
-    var restSender: RestSender<CommandContext>
+    public var restSender: RestSender<CommandContext>
     public var commandContext: CommandContext?
 
     public init(serverUrl:String, context: CommandContext){
