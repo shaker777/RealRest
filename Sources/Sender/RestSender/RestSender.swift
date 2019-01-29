@@ -24,6 +24,7 @@ class RestSender<Context>: ISender {
     var num: Int = 0
     var fakeQueue = DispatchQueue(label: "RestSenderFakeQueue")
     var serverUrl: String = ""
+    public var headers: [String: String] = [:]
     
     init(serverUrl: String) {
         self.serverUrl = serverUrl;
@@ -92,7 +93,7 @@ class RestSender<Context>: ISender {
                 command.onExecute()
 
                 let requestUrl = "\(serverUrl)\(command.path)"
-                var headers: [String: String] = [:]
+                //var headers: [String: String] = [:]
                 let progressKey = "\(type(of: command)) \(command.num)"
 
                 if (command.showProgress) {
@@ -116,7 +117,7 @@ class RestSender<Context>: ISender {
                 }
                 
                 //Original response
-                client.send(url: requestUrl, data: command.getSendData(), headers: headers, method: command.method, callback: { [weak self] response in
+                client.send(url: requestUrl, data: command.getSendData(), headers: self.headers, method: command.method, callback: { [weak self] response in
                     if (command.debugLog){
                         print("[INFO] [RestSender] recieve \(type(of: command))(\(command.num) code:\(response.status_code) : \n \(response))")
                     }else{
