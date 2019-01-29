@@ -26,7 +26,7 @@ open class CommandExecutor <CommandContext>: ICommandExecutor {
     }
     
     open func setupHeaders(headers:[String:String]) {
-        self.restSender.setHeaders = headers
+        self.restSender.headers = headers
     }
     
     open func execute<T: ICommand>(_ command: T) -> CommandFuture<T>.FutureT {
