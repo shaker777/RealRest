@@ -131,7 +131,7 @@ class RestSender<Context>: ISender {
                             command.success()
                         } else {
                             print("[ERROR] [RestSender] deserealize \"data\" error")
-                            command.error(error: RestCommandError(statusCode: response.status_code, response:[]))
+                            command.error(error: RestCommandError(statusCode: response.status_code, response:[:]))
                             if (command.debugLog == false){
                                 print("[INFO] [RestSender] recieve \(type(of: command))(\(command.num) code:\(response.status_code) : \n \(response))")
                             }
@@ -140,7 +140,7 @@ class RestSender<Context>: ISender {
                         if let jsonError = response.json?["error"] as? NSDictionary {
                             command.error(error: RestCommandError(statusCode: response.status_code, response: jsonError))
                         } else {
-                            command.error(error: RestCommandError(statusCode: response.status_code, response: []))
+                            command.error(error: RestCommandError(statusCode: response.status_code, response: [:]))
                         }
                     }
                     self?.send()
@@ -148,7 +148,7 @@ class RestSender<Context>: ISender {
 
             } else {
                 print("[ERROR] [RestSender] command check error \(command.path)")
-                command.error(error: RestCommandError(statusCode: .client_error, response: []))
+                command.error(error: RestCommandError(statusCode: .client_error, response: [:]))
             }
         }
 

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RealRest'
-  s.version          = '0.1.8'
+  s.version          = '0.1.9'
   s.summary          = 'Controller executor'
   s.description      = <<-DESC
  Part of the Controller in modern MVC                       
