@@ -10,8 +10,10 @@ import Foundation
 
 open class RestCommandError: Error {
     let statusCode: StatusCode
+    let response:NSDictionary
 
-    init(statusCode: StatusCode) {
+    init(statusCode: StatusCode, response:NSDictionary) {
         self.statusCode = statusCode
+        self.response = response
     }
 }

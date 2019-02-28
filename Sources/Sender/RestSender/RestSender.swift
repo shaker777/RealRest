@@ -138,9 +138,9 @@ class RestSender<Context>: ISender {
                         }
                     default:
                         if let jsonError = response.json?["error"] as? NSDictionary {
-                            command.error(error: RestCommandError(statusCode: response.status_code))
+                            command.error(error: RestCommandError(statusCode: response.status_code, response: response))
                         } else {
-                            command.error(error: RestCommandError(statusCode: response.status_code))
+                            command.error(error: RestCommandError(statusCode: response.status_code, response: response))
                         }
                     }
                     self?.send()
@@ -148,7 +148,7 @@ class RestSender<Context>: ISender {
 
             } else {
                 print("[ERROR] [RestSender] command check error \(command.path)")
-                command.error(error: RestCommandError(statusCode: .client_error))
+                command.error(error: RestCommandError(statusCode: .client_error, response: response))
             }
         }
 
