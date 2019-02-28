@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum StatusCode: Int {
+public enum StatusCode: Int {
     case undefined = -1
     case client_error = -2
     
