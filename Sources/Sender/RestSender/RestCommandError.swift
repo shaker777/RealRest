@@ -12,7 +12,7 @@ open class RestCommandError: Error {
     let statusCode: StatusCode
     let response:NSDictionary
 
-    init(statusCode: StatusCode, response:NSDictionary) {
+    public init(statusCode: StatusCode, response:NSDictionary) {
         self.statusCode = statusCode
         self.response = response
     }
