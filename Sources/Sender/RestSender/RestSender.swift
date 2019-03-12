@@ -137,7 +137,7 @@ class RestSender<Context>: ISender {
                             }
                         }
                     default:
-                        if let jsonError = response.json?["error"] as? NSDictionary {
+                        if let jsonError = response.json {
                             command.error(error: RestCommandError(statusCode: response.status_code, response: jsonError))
                         } else {
                             command.error(error: RestCommandError(statusCode: response.status_code, response: [:]))
