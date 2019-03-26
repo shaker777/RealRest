@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'Alamofire', '4.7.3'
   s.dependency 'BrightFutures', '7.0.0'
-  s.dependency 'EVReflection', '5.7.0'
+  s.dependency 'EVReflection', '5.10.0'
   s.dependency 'MBProgressHUD', '1.1.0'
 end
